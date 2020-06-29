@@ -1,0 +1,200 @@
+package Singleton;
+
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.sun.xml.bind.v2.runtime.property.ValueProperty;
+
+import Entidades.Carrera;
+import Entidades.Estudiante;
+import Entidades.Facultad;
+import Entidades.Usuario;
+
+public class ProductDao {
+
+	public boolean validarUsuario(Usuario request)
+	{
+		boolean valida=false;
+		//Usuario usuario= new Usuario();
+		String nombreUsuario = "";
+		String correo = "";
+		String telefono = ""; 
+		String contrasena = "";
+		String idUsuario = "";
+		String edad = "";
+		String genero = "";
+		String tipoUsuario= "";
+        Connection connection=Singleton.getConnection();
+        
+        try
+        {
+        	switch (request.getMetodo())
+        	{
+        		case "registro":
+        			PreparedStatement statement = connection.prepareStatement("SELECT * FROM USUARIO WHERE CORREO = ? AND TELEFONO = ?");
+        			statement.setString(1,request.getCorreo());
+                	statement.setString(2, request.getTelefono());
+                	ResultSet rs= statement.executeQuery();
+                	while (rs.next())
+                	{
+                		Usuario usuario=new Usuario(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+                		idUsuario = usuario.getIdUsuario();
+                		nombreUsuario=usuario.getNombreUsuario();
+                		correo=usuario.getCorreo();
+                		telefono=usuario.getTelefono();
+                		edad=usuario.getEdad();
+                		genero=usuario.getGenero();
+                		contrasena = usuario.getContrasena();
+                	}
+                	
+                	valida = (correo.equals(request.getCorreo())) ? true : false;
+        		break;
+        		case "ingreso":
+        			PreparedStatement st = connection.prepareStatement("SELECT * FROM USUARIO WHERE IDUSUARIO = ? AND CONTRASENA = ?");
+        			st.setString(1,request.getIdUsuario());
+        			st.setString(2, request.getContrasena());
+                	ResultSet rst= st.executeQuery();
+                	while (rst.next())
+                	{
+                		Usuario usuario=new Usuario(rst.getString(1),rst.getString(2),rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8));
+                		idUsuario = usuario.getIdUsuario();
+                		nombreUsuario=usuario.getNombreUsuario();
+                		correo=usuario.getCorreo();
+                		telefono=usuario.getTelefono();
+                		edad=usuario.getEdad();
+                		genero=usuario.getGenero();
+                		contrasena = usuario.getContrasena();
+                		tipoUsuario = usuario.getIdTipoUsuario();
+                	}
+        			
+        			valida = (idUsuario.equals(request.getIdUsuario()) && contrasena.equals(request.getContrasena()))? true : false;
+        			request.setIdTipoUsuario(tipoUsuario);
+        			System.out.print("reques idusu: "+request.getIdUsuario()+ " req pass: "+request.getContrasena()+" rs usu: "+idUsuario+" rs pass: "+contrasena);
+            	break;
+        	}
+    	}
+		catch(Exception e)
+        {
+			e.printStackTrace();
+            valida = true;
+            System.out.println("Ingresa al catch "+valida);
+        }
+		
+		return valida;
+	}
+
+	public boolean InsertarUsuario(Usuario request) {
+		
+		Connection connection=Singleton.getConnection();
+		
+		try
+		{
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO USUARIO VALUES (?,?,?,?,?,?,?,?);");
+			statement.setString(1,request.getIdUsuario());
+			statement.setString(2,request.getNombreUsuario());
+			statement.setString(3,request.getCorreo());
+			statement.setString(4,request.getTelefono());
+			statement.setString(5,request.getEdad());
+			statement.setString(6,request.getGenero());
+			statement.setString(7,request.getTelefono());
+			statement.setString(8,request.getIdTipoUsuario());
+			statement.executeUpdate();
+            return true;
+
+            
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			 return false;
+		}
+		
+	}
+
+	public void InsertarEstudiante(String idUsuario) {
+		Connection connection=Singleton.getConnection();
+		
+		try
+		{
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO ESTUDIANTE VALUES (?,?,?,?,?);");
+			statement.setString(1,idUsuario);
+			statement.setString(2,"");
+			statement.setString(3,"");
+			statement.setString(4,"");
+			statement.setString(5,"0");
+			statement.executeUpdate();            
+
+            
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+	public Usuario consultaEstudianteBase(Usuario request) {
+		Usuario usuario=null;
+		Connection connection=Singleton.getConnection(); 
+		String query="";
+		String variable="";
+		
+		try
+		{
+			if(!request.getIdUsuario().isEmpty() && request.getIdUsuario().isBlank())
+			{
+				query="SELECT *FROM USUARIO WHERE IDUSUARIO= ?;";
+				variable=request.getIdUsuario();
+				
+			}
+			else if(request.getCorreo().isEmpty() && request.getCorreo().isBlank())
+			{
+				query="SELECT *FROM USUARIO WHERE CORREO = ?;";
+				variable=request.getCorreo();
+			}
+			
+			
+			PreparedStatement st = connection.prepareStatement(query);
+			st.setString(1,variable);
+			ResultSet rs= st.executeQuery();
+        	while (rs.next())
+        	{
+        		usuario=new Usuario(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+        	}
+			return usuario;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+	}
+
+	public boolean actualizarContrasena(Usuario request) {
+Connection connection=Singleton.getConnection();
+		
+		try
+		{
+			PreparedStatement statement = connection.prepareStatement("UPDATE USUARIO SET CONTRASENA = ? WHERE CORREO = ?;");
+			statement.setString(1,idUsuario);
+			          
+
+            
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	
+
+	
+	
+}

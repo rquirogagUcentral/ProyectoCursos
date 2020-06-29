@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+/home/rosemberg/Documentos/Universidad/2020I/Ing-softI/ProyectoCursos/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1070495639.index
+/RestUC/src/main/java
+/home/rosemberg/Documentos/Universidad/2020I/Ing-softI/ProyectoCursos/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/4252791901.index
+/cursosUc/src/main/java

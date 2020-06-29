@@ -1,0 +1,112 @@
+package Factory;
+
+import Entidades.Coordinador;
+import Entidades.Docente;
+import Entidades.Estudiante;
+import Entidades.Usuario;
+import Facade.ICrudUsuarioFacade;
+import Facade.IUsuarioFacade;
+import Singleton.ProductDao;
+import rest.Model.Util.ResponseGeneric;
+
+public class UsuarioFactory implements IUsuarioFacade{
+
+	/**
+	 *
+	 */
+	public ResponseGeneric sendService(Usuario request) {
+		ResponseGeneric response= null;
+		
+		
+		
+		switch(request.getMetodo())
+		{
+			/*
+			case "validar":
+				response = Usuario.validarUsuario(request);
+			break;*/
+			
+			case "crear":
+				switch(request.getIdTipoUsuario()) 
+				{
+					case "0"://Coord
+						ICrudUsuarioFacade iCrudCoordinador =  new Coordinador();
+						response = iCrudCoordinador.registro(request);
+					break;
+					case "1"://Docente
+						ICrudUsuarioFacade iCrudDocente =  new Docente();
+						response = iCrudDocente.registro(request);
+					break;
+					case "2"://Estudiante
+							ICrudUsuarioFacade iCrudEstudiante =  new Estudiante();
+							response = iCrudEstudiante.registro(request);
+					break;
+				}
+			break;
+			
+			case "actualizar":
+				switch(request.getIdTipoUsuario()) 
+				{
+					case "0"://Coord
+					break;
+					case "1"://Docente
+					break;
+					case "2"://Estudiante
+					break;
+				}
+				return null;
+			break;
+		}
+		
+	}
+
+	@Override
+	public Usuario getUsuario(Usuario request) {
+		ProductDao pd = new ProductDao();
+		Usuario usuario=new Usuario();
+		Estudiante estudiante = new Estudiante();
+		Docente docente = new Docente();
+		Coordinador coordinador = new Coordinador();
+		request.setMetodo("ingreso");
+		//Paso 1 Realiza la consulta basica del usuario
+		usuario= pd.consultaUsuarioBase(request);
+			request.setIdUsuario(usuario.getIdUsuario());
+			System.out.print(request.getIdUsuario()+"\n");
+			request.setNombreUsuario(usuario.getNombreUsuario());
+			System.out.print(request.getNombreUsuario()+"\n");
+			request.setCorreo(usuario.getCorreo());
+			System.out.print(request.getCorreo()+"\n");
+			request.setTelefono(usuario.getTelefono());
+			System.out.print(request.getTelefono()+"\n");
+			request.setEdad(usuario.getEdad());
+			System.out.print(request.getEdad()+"\n");
+			request.setGenero(usuario.getGenero());
+			System.out.print(request.getGenero()+"\n");
+			request.setContrasena(usuario.getContrasena());
+			System.out.print(request.getContrasena()+"\n");
+			request.setIdTipoUsuario(usuario.getIdTipoUsuario());
+			System.out.print(request.getIdTipoUsuario()+"\n");
+			request.setFlagCase(usuario.getFlagCase());
+			System.out.print(request.getFlagCase()+"\n");
+		switch(request.getIdTipoUsuario())
+		{
+			case "0":
+				ICrudUsuarioFacade iCrudCoordinador =  new Coordinador();
+				request = iCrudCoordinador.getUsuario(request);
+			break;
+			case "1":
+				ICrudUsuarioFacade iCrudDocente =  new Docente();
+				request = iCrudDocente.getUsuario(request);
+			break;
+			case "2":
+				ICrudUsuarioFacade iCrudEstudiante =  new Estudiante();
+				request = iCrudEstudiante.getUsuario(request);
+			break;
+		}
+		
+		return request;
+	}
+
+	
+
+}

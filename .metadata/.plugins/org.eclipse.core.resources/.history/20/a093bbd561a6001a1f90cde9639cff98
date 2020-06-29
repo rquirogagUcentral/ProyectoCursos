@@ -1,0 +1,70 @@
+package Entidades;
+
+import Facade.ICrudUsuarioFacade;
+import Singleton.ProductDao;
+import rest.Model.Util.ResponseGeneric;
+
+public class Docente implements ICrudUsuarioFacade{
+	private Facultad facultad;
+	private String curriculo;
+	
+	ProductDao pd=new ProductDao();
+	
+	public Docente() {
+		super();
+	}
+
+	public Docente(Facultad facultad, String curriculo) {
+		super();
+		this.facultad = facultad;
+		this.curriculo = curriculo;
+	}
+
+
+
+	
+	
+	public Facultad getFacultad() {
+		return facultad;
+	}
+
+	public void setFacultad(Facultad facultad) {
+		this.facultad = facultad;
+	}
+
+	public String getCurriculo() {
+		return curriculo;
+	}
+
+	public void setCurriculo(String curriculo) {
+		this.curriculo = curriculo;
+	}
+
+	@Override
+	public ResponseGeneric registro(Usuario request) {
+		
+		return null;
+	}
+
+	//Realiza la consulta de la información básica del usuario
+		@Override
+		public Usuario getUsuario(Usuario request)
+		{
+			try
+			{
+				Usuario usuario=new Usuario();
+				Estudiante estudiante = new Estudiante();
+				//Paso 2. Se obtiene la información del estudiante.
+				estudiante=pd.consultaEstudiante(request.getIdUsuario());
+					Estudiante est=new Estudiante(new Carrera(estudiante.getIdCarrera(),""), new Facultad(estudiante.getIdFacultad(),""),estudiante.getSemestre());
+					request.setEstudiante(est);
+				return request;
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+				return null;
+			}
+		}
+
+}

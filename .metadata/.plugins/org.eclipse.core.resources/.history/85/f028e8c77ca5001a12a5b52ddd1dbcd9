@@ -1,0 +1,74 @@
+package Entidades;
+
+import Facade.ICrudUsuarioFacade;
+import Singleton.ProductDao;
+import rest.Model.Util.ResponseGeneric;
+
+public class Docente implements ICrudUsuarioFacade{
+	private Facultad facultad;
+	private String curriculo;
+	
+	ProductDao pd=new ProductDao();
+	
+	public Docente() {
+		super();
+	}
+
+	public Docente(Facultad facultad, String curriculo) {
+		super();
+		this.facultad = facultad;
+		this.curriculo = curriculo;
+	}
+
+	public Docente(String idUsuario, String contrasena, Facultad facultad, String curriculo) {
+		super(idUsuario, contrasena);
+		this.facultad = facultad;
+		this.curriculo = curriculo;
+	}
+
+	
+	
+	public Facultad getFacultad() {
+		return facultad;
+	}
+
+	public void setFacultad(Facultad facultad) {
+		this.facultad = facultad;
+	}
+
+	public String getCurriculo() {
+		return curriculo;
+	}
+
+	public void setCurriculo(String curriculo) {
+		this.curriculo = curriculo;
+	}
+
+	@Override
+	public ResponseGeneric registro(Usuario request) {
+		
+		return null;
+	}
+
+	//Realiza la consulta de la información básica del usuario
+	@Override
+	public Usuario getUsuario(Usuario request) {
+		Usuario usuario=new Usuario();
+		//Paso 1 Realiza la consulta basica del usuario
+		usuario= pd.consultaUsuarioBase(request);
+			request.setIdUsuario(usuario.getIdUsuario());
+			request.setNombreUsuario(usuario.getNombreUsuario());
+			request.setCorreo(usuario.getCorreo());
+			request.setTelefono(usuario.getTelefono());
+			request.setEdad(usuario.getEdad());
+			request.setGenero(usuario.getGenero());
+			request.setContrasena(usuario.getContrasena());
+			request.setIdTipoUsuario(usuario.getIdTipoUsuario());
+			request.setFlagCase(usuario.getFlagCase());
+			
+		
+		
+		return null;
+	}
+
+}

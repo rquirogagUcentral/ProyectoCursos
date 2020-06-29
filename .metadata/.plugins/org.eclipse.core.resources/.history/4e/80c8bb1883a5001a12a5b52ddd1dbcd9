@@ -1,0 +1,142 @@
+package Entidades;
+
+import java.util.ArrayList;
+
+import Facade.ICrudUsuarioFacade;
+import Singleton.ProductDao;
+import rest.Model.Util.ResponseGeneric;
+
+public class Estudiante implements ICrudUsuarioFacade{
+	private Carrera carreraEstudio;
+	private Facultad facultadEstudio;
+	private String idCarrera;
+	private String idFacultad; 
+	private String semestre;
+	
+	ProductDao pd = new ProductDao();
+	
+	
+	
+	public Estudiante(String idCarrera, String idFacultad, String semestre) {
+		super();
+		this.idCarrera = idCarrera;
+		this.idFacultad = idFacultad;
+		this.semestre = semestre;
+	}
+
+
+
+	public Estudiante(Carrera carreraEstudio, Facultad facultadEstudio, String semestre) {
+		super();
+		this.carreraEstudio = carreraEstudio;
+		this.facultadEstudio = facultadEstudio;
+		this.semestre = semestre;
+	}
+
+
+
+	public Estudiante(String semestre) {
+		super();
+		carreraEstudio = new Carrera();
+		facultadEstudio =  new Facultad();
+		this.semestre = semestre;
+	}
+
+	public Estudiante() {
+		super();
+	}
+
+	public Carrera getCarreraEstudio() {
+		return carreraEstudio;
+	}
+
+
+
+	public void setCarreraEstudio(Carrera carreraEstudio) {
+		this.carreraEstudio = carreraEstudio;
+	}
+
+
+
+	public Facultad getFacultadEstudio() {
+		return facultadEstudio;
+	}
+
+
+
+	public void setFacultadEstudio(Facultad facultadEstudio) {
+		this.facultadEstudio = facultadEstudio;
+	}
+
+
+
+	public String getSemestre() {
+		return semestre;
+	}
+
+
+
+	public void setSemestre(String semestre) {
+		this.semestre = semestre;
+	}
+
+	
+	
+	public String getIdCarrera() {
+		return idCarrera;
+	}
+
+
+
+	public void setIdCarrera(String idCarrera) {
+		this.idCarrera = idCarrera;
+	}
+
+
+
+	public String getIdFacultad() {
+		return idFacultad;
+	}
+
+
+
+	public void setIdFacultad(String idFacultad) {
+		this.idFacultad = idFacultad;
+	}
+
+	@Override
+	public ResponseGeneric registro(Usuario request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	//Realiza la consulta de la información básica del usuario
+	@Override
+	public Usuario getUsuario(Usuario request) {
+		Usuario usuario=new Usuario();
+		Estudiante estudiante = new Estudiante();
+		//Paso 1 Realiza la consulta basica del usuario
+		usuario= pd.consultaUsuarioBase(request);
+			request.setIdUsuario(usuario.getIdUsuario());
+			request.setNombreUsuario(usuario.getNombreUsuario());
+			request.setCorreo(usuario.getCorreo());
+			request.setTelefono(usuario.getTelefono());
+			request.setEdad(usuario.getEdad());
+			request.setGenero(usuario.getGenero());
+			request.setContrasena(usuario.getContrasena());
+			request.setIdTipoUsuario(usuario.getIdTipoUsuario());
+			request.setFlagCase(usuario.getFlagCase());
+			
+		estudiante=pd.consultaEstudiante(request.getIdUsuario());
+			Estudiante est=new Estudiante(new Carrera(estudiante.getIdCarrera(),""), new Facultad(estudiante.getIdFacultad(),""),estudiante.getSemestre());
+			request.setEstudiante(est);
+		return request;
+	}
+
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+    <fullyQualifiedTypeName name="com.javacursosuc.ws.rest.vo.VOUsuario"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
+    <fullyQualifiedTypeName name="Facade.IUsuarioFacade"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.lang.Class"/>
+    <fullyQualifiedTypeName name="java.util.Properties"/>
+    <fullyQualifiedTypeName name="rest.Model.Util.ServiceMail"/>
+    <fullyQualifiedTypeName name="javax.mail.Session"/>
+    <fullyQualifiedTypeName name="javax.mail.internet.MimeMessage"/>
+    <fullyQualifiedTypeName name="javax.mail.internet.InternetAddress"/>
+    <fullyQualifiedTypeName name="javax.mail.internet.AddressException"/>
+    <fullyQualifiedTypeName name="com.sun.istack.logging.Logger"/>
+    <fullyQualifiedTypeName name="javax.mail.Message"/>
+    <fullyQualifiedTypeName name="javax.mail.Message.RecipientType"/>
+    <fullyQualifiedTypeName name="javax.mail.Transport"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="Entidades.Docente"/>
+    <fullyQualifiedTypeName name="Facade.ICrudUsuarioFacade"/>
+    <fullyQualifiedTypeName name="com.sun.xml.bind.v2.runtime.property.ValueProperty"/>
+    <fullyQualifiedTypeName name="Entidades.Usuario"/>
+    <fullyQualifiedTypeName name="Singleton.Singleton"/>
+    <fullyQualifiedTypeName name="Entidades.Facultad"/>
+    <fullyQualifiedTypeName name="Entidades.Carrera"/>
+    <fullyQualifiedTypeName name="javax.mail.SendFailedException"/>
+    <fullyQualifiedTypeName name="Singleton.ProductDao"/>
+    <fullyQualifiedTypeName name="Entidades.Estudiante"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="Entidades.Coordinador"/>
+    <fullyQualifiedTypeName name="rest.Model.Util.ResponseGeneric"/>
+    <fullyQualifiedTypeName name="Factory.UsuarioFactory"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+</qualifiedTypeNameHistroy>

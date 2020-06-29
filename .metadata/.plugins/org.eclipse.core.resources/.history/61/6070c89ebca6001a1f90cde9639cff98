@@ -1,0 +1,162 @@
+package com.javacursosuc.ws.rest.service;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.javacursosuc.ws.rest.vo.VOUsuario;
+
+import Entidades.Usuario;
+import Factory.UsuarioFactory;
+import rest.Model.Util.ResponseGeneric;
+
+@Path("/cursosuc")
+public class ServiceLogin {
+	
+	@POST
+	@Path("/ValidaUsuario")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	//Realiza la validación de los datos indicados en el formulario de Registro inicial del Estudiante
+	//Realiza el envío del correo electronico asignando un usuario y contraseña
+	//Envia Nombre de usuario, correo , telefono
+	//Retorna Respuesta general de consumo
+	public Response validarUsuario(Usuario request)
+	{
+		Usuario usu=new Usuario();
+		ResponseGeneric response=null;
+		try
+		{
+			response = usu.validarUsuario(request);
+			if(response.getEstado().equals("OK"))
+			{
+				return Response.status(Response.Status.OK).entity(response).build();
+			}
+			else
+			{
+				return Response.status(Response.Status.NOT_ACCEPTABLE).entity(response).build();
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+	}
+	
+	
+	@POST
+	@Path("/ValidaIngreso")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	//Realiza la validación de los datos indicados en el formulario de Ingreso a la plataforma
+	//Envia Usuario y contraseña
+	//Retorna Respuesta general de consumo, existe o no el usuario.
+	public Response validaIngreso(Usuario request)
+	{
+		Usuario usu=new Usuario();
+		ResponseGeneric response=null;
+		
+		try
+		{
+			 response = usu.validarIngreso(request);
+			 if(response.getEstado().equals("OK"))
+				{
+					return Response.status(Response.Status.OK).entity(response).build();
+				}
+				else
+				{
+					return Response.status(Response.Status.NOT_ACCEPTABLE).entity(response).build();
+				}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+	}
+	
+	@POST
+	@Path("/actualizarUsuario")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	//Realiza la validación de los datos indicados en el formulario de Ingreso a la plataforma
+	//Envia Usuario y contraseña
+	//Retorna Respuesta general de consumo, existe o no el usuario.
+	public Response ActualizarUsuario(Usuario request)
+	{
+		UsuarioFactory usuFact=new UsuarioFactory();
+		ResponseGeneric response=null;
+		
+		try
+		{
+			 response = usuFact.sendService(request);
+			 if(response.getEstado().equals("OK"))
+				{
+					return Response.status(Response.Status.OK).entity(response).build();
+				}
+				else
+				{
+					return Response.status(Response.Status.NOT_ACCEPTABLE).entity(response).build();
+				}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+	}
+	
+	
+	@POST
+	@Path("/getUsuario")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	//Obtiene la información basica del usuario contenida en la base de datos
+	//Envía idUsuario , contraseña
+	//Retorna objeto tipo Usuario con la información.	
+	public Response getUsuario(Usuario request)
+	{
+		UsuarioFactory usuFact=new UsuarioFactory();
+		try
+		{
+			request = usuFact.getUsuario(request);
+			return Response.status(Response.Status.OK).entity(request).build();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).entity(request).build();
+		}
+
+	}
+	@POST
+	@Path("/recupContrasena")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	//Obtiene la información basica del usuario contenida en la base de datos
+	//Envía idUsuario , contraseña
+	//Retorna objeto tipo Usuario con la información
+	public Response olvContra(Usuario request)
+	{
+		Usuario usuFact=new Usuario();
+		ResponseGeneric response = null;
+		try
+		{
+			response = usuFact.olvidoContrasena(request);
+			return Response.status(Response.Status.OK).entity(response).build();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).entity(response).build();
+		}
+	}
+	
+}

@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+locationorg.eclipse.jst.server.tomcat.runtime.70=/home/rosemberg/tomcatServer/Tomcat-7
+locationorg.eclipse.jst.server.tomcat.runtime.80=/home/rosemberg/eclipse/jee-2020-03/eclipse
+locationorg.eclipse.jst.server.tomcat.runtime.90=/home/rosemberg/tomcatServer/apache-tomcat-9.0.35

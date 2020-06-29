@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/home/rosemberg/Documentos/Universidad/2020I/Ing-softI/ProyectoCursos/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2862628224.index
+3060183311.index
+3752074984.index
+300709889.index
+1482197294.index
+3072822116.index
+20513783.index

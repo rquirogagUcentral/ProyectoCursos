@@ -1,0 +1,16 @@
+127.0.0.1 - - [02/Jun/2020:16:19:42 -0500] "GET / HTTP/1.1" 404 687
+127.0.0.1 - - [02/Jun/2020:16:19:46 -0500] "GET /RestUC/ HTTP/1.1" 200 52
+127.0.0.1 - - [02/Jun/2020:16:20:12 -0500] "OPTIONS /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 533
+127.0.0.1 - - [02/Jun/2020:16:20:12 -0500] "POST /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 65
+127.0.0.1 - - [02/Jun/2020:16:21:00 -0500] "OPTIONS /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 533
+127.0.0.1 - - [02/Jun/2020:16:21:00 -0500] "POST /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 65
+127.0.0.1 - - [02/Jun/2020:16:24:44 -0500] "OPTIONS /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 533
+127.0.0.1 - - [02/Jun/2020:16:24:44 -0500] "POST /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 65
+127.0.0.1 - - [02/Jun/2020:16:30:32 -0500] "OPTIONS /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 533
+127.0.0.1 - - [02/Jun/2020:16:30:32 -0500] "POST /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 65
+127.0.0.1 - - [02/Jun/2020:16:30:53 -0500] "OPTIONS /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 533
+127.0.0.1 - - [02/Jun/2020:16:30:53 -0500] "POST /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 65
+127.0.0.1 - - [02/Jun/2020:17:23:32 -0500] "GET / HTTP/1.1" 404 687
+127.0.0.1 - - [02/Jun/2020:17:23:32 -0500] "OPTIONS /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 533
+127.0.0.1 - - [02/Jun/2020:17:23:33 -0500] "POST /RestUC/services/cursosuc/ValidaIngreso HTTP/1.1" 200 65
+127.0.0.1 - - [02/Jun/2020:17:23:36 -0500] "GET /RestUC/ HTTP/1.1" 200 52

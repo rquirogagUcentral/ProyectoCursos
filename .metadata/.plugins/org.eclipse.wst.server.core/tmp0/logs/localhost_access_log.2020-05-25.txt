@@ -1,0 +1,17 @@
+127.0.0.1 - - [25/May/2020:21:12:32 -0500] "GET / HTTP/1.1" 404 687
+127.0.0.1 - - [25/May/2020:21:18:17 -0500] "GET / HTTP/1.1" 404 687
+127.0.0.1 - - [25/May/2020:21:18:20 -0500] "GET /RestUC/ HTTP/1.1" 200 52
+127.0.0.1 - - [25/May/2020:21:18:49 -0500] "GET /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 405 -
+127.0.0.1 - - [25/May/2020:21:18:51 -0500] "GET /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 405 -
+127.0.0.1 - - [25/May/2020:21:18:59 -0500] "GET /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 405 -
+127.0.0.1 - - [25/May/2020:21:19:03 -0500] "GET /RestUC/cursosuc/validarUsuario HTTP/1.1" 404 725
+127.0.0.1 - - [25/May/2020:21:19:09 -0500] "GET /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 405 -
+127.0.0.1 - - [25/May/2020:21:19:19 -0500] "GET /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 405 -
+0:0:0:0:0:0:0:1 - - [25/May/2020:21:19:25 -0500] "GET /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 405 -
+0:0:0:0:0:0:0:1 - - [25/May/2020:21:19:27 -0500] "GET /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 405 -
+127.0.0.1 - - [25/May/2020:21:19:46 -0500] "GET /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 405 -
+0:0:0:0:0:0:0:1 - - [25/May/2020:21:23:34 -0500] "POST /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 200 66
+0:0:0:0:0:0:0:1 - - [25/May/2020:21:29:00 -0500] "POST /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 200 67
+0:0:0:0:0:0:0:1 - - [25/May/2020:22:48:09 -0500] "POST /RestUC/services/cursosuc/validarUsuario HTTP/1.1" 200 66
+127.0.0.1 - - [25/May/2020:23:59:51 -0500] "GET / HTTP/1.1" 404 687
+127.0.0.1 - - [25/May/2020:23:59:52 -0500] "GET /RestUC/ HTTP/1.1" 200 52
